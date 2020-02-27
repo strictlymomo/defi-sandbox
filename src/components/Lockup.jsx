@@ -53,6 +53,7 @@ export default class Simple extends PureComponent {
 	};
 
 	render() {
+
 		let data = [
 			{ value: 335, change: 10, name: 'Aave' },
 			{ value: 310, change: 10, name: 'bZx' },
@@ -63,8 +64,9 @@ export default class Simple extends PureComponent {
 			{ value: 1548, change: 10, name: 'Maker (SCD)' },
 			{ value: 1548, change: 10, name: 'Maker (MCD)' }
 		];
+
 		let items = [];
-		
+
 		for (const [index, datum] of data.entries()) {
 			items.push(<tr key={index}>
 				<td>{datum.name}</td>
@@ -77,6 +79,7 @@ export default class Simple extends PureComponent {
 			<>
 				<h1>Overview</h1>
 				<ReactEcharts
+					ref={(e) => { this.echarts_react = e; }}
 					option={this.getOption()}
 					style={{ height: '350px', width: '100%' }}
 					className='defi-aggregate' />
@@ -89,10 +92,24 @@ export default class Simple extends PureComponent {
 						</tr>
 					</thead>
 					<tbody>
-						{ items }
+						{items}
 					</tbody>
 				</table>
-      </>
-    );
+			</>
+		);
 	}
+
+	mouseOver = (dataIndex) => {
+		this.pie_chart.dispatchAction({
+			type: 'highlight',
+			dataIndex: dataIndex,
+		})
+	};
+
+	mouseOut = (dataIndex) => {
+		this.pie_chart.dispatchAction({
+			type: 'downplay',
+			dataIndex: dataIndex,
+		})
+	};
 }

@@ -39,14 +39,10 @@ export default class Graph extends PureComponent {
 		return (
 			<>
 				<h1>User Network or DeFi Protocols</h1>
-				<div className='examples'>
-					<div className='parent'>
-						<ReactEcharts
+				<ReactEcharts
 							option={this.getOption()}
 							style={{ height: '700px', width: '100%' }}
 							className='react_for_echarts' />
-					</div>
-				</div>
 			</>
 		);
 	}

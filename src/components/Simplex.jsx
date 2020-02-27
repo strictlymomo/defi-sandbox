@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import ReactEcharts from 'echarts-for-react';
+// import protocols from '../data/protocols';
 
 export default class Simple extends PureComponent {
   getOption = () => {
